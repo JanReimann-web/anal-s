@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+  <meta charset="UTF-8">
+  <title>LHV GROUP AKTSIA ANALÜÜS – Q1 2025</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- Tailwind CSS v2.2.19 -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <!-- Chart.js v4.4.3 -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+  <!-- Font Awesome v6.5.2 -->
+  <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* Põhistilid */
+    body { font-family: 'Roboto', sans-serif; background-color: #f7fafc; color: #212529; }
+    h1, h2, h3, h4 { font-family: 'Roboto', sans-serif; }
+    .section-title { font-size: 1.6rem; font-weight: 600; letter-spacing: .02em; color: #0f172a; }
+    .highlight { color: #047857; font-weight: 700; }
+    .lhv-bg { background: linear-gradient(90deg, #1e293b 60%, #3b82f6 100%); }
+    .custom-shadow { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+    .no-print { display: none !important; }
+
+    /* Trükikõlblikud reeglid */
+    @media print {
+      /* Kasuta printimiseks trükistiile */
+      * { -webkit-print-color-adjust: exact; }
+
+      /* Eemalda kõik absoluutsed positsioonid (nt suhtarvude paneel) */
+      section.relative > .absolute {
+        position: static !important;
+        width: auto !important;
+        height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+
+      /* Nulli suure parempoolse padding’u (md:pr-[40%]) */
+      .md\:pr-\[40\%\] {
+        padding-right: 0 !important;
+      }
+
+      /* Vältida Canvas’ite poolikut katkestust leheküljel */
+      canvas {
+        page-break-inside: avoid !important;
+      }
+
+      /* Luba kogu tausta trükk */
+      html, body {
+        background: white !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="pt-0">
+  <!-- Banner -->
+  <section class="lhv-bg text-white p-8 custom-shadow rounded-b-2xl relative">
+    <div class="container mx-auto flex flex-col md:flex-row items-center justify-between">
+      <div>
+        <h1 class="text-3xl md:text-4xl font-bold tracking-tight mb-2">LHV GROUP AKTSIA ANALÜÜS – Q1 2025</h1>
+        <p class="text-lg md:text-xl font-light mb-2">Põhjalik ülevaade Eesti juhtiva finantsgrupi aktsiast, tulemustest ning turuolukorrast</p>
+        <div class="flex flex-wrap items-center mt-3 text-sm">
+          <span class="mr-4"><i class="fas fa-calendar-alt"></i> Avaldatud: 24. aprill 2025</span>
+          <span><i class="fas fa-user-tie"></i> Analüüs: Jan Reimann & AI</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sisukord -->
+  <nav class="container mx-auto my-8 bg-white rounded-lg shadow p-6 border border-gray-200">
+    <h2 class="section-title mb-4">Sisukord</h2>
+    <ol class="list-decimal ml-4 space-y-1 text-blue-800">
+      <li><a href="#kokkuvote" class="hover:underline">Kokkuvõte ja põhijäreldused</a></li>
+      <li><a href="#ettevote" class="hover:underline">Ettevõtte tutvustus ja tegevusvaldkonnad</a></li>
+      <li><a href="#tulemused" class="hover:underline">Q1 2025 finantstulemused</a></li>
+      <li><a href="#finants" class="hover:underline">Finantsanalüüs ja võtmenäitajad</a></li>
+      <li><a href="#turg" class="hover:underline">Turuülevaade ja konkurentsipositsioon</a></li>
+      <li><a href="#prognoosid" class="hover:underline">Tulevikuprognoosid ja riskid</a></li>
+      <li><a href="#soovitused" class="hover:underline">Aktsiahinna soovitused</a></li>
+      <li><a href="#allikad" class="hover:underline">Allikad ja kasutatud materjalid</a></li>
+    </ol>
+  </nav>
+
+  <!-- Kokkuvõte ja põhijäreldused -->
+<section id="kokkuvote" class="container mx-auto my-8 bg-white rounded-lg shadow p-6 border border-gray-200">
+  <h2 class="section-title mb-4">
+    <i class="fas fa-clipboard-check text-green-800 mr-2"></i>
+    Kokkuvõte ja põhijäreldused
+  </h2>
+
+  <div class="flex flex-col md:flex-row md:items-start md:space-x-8">
+    <!-- Vasak pool: pilt -->
+    <img
+      loading="lazy"
+      src="data:image/jpeg;base64,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"
+      alt="LHV Group peakontor Tallinnas ja peamised tegevusvaldkonnad"
+    class="w-full md:w-1/6 rounded-lg shadow border border-gray-100 mb-4 md:mb-0"
+    >
+
+    <!-- Parem pool: tekst -->
+    <div class="flex-1">
+      <p class="mb-4">
+        <strong>LHV Group</strong> on Eesti suurim kodumaine finantsgrupp, millele kuuluvad LHV Pank, LHV Varahaldus, LHV Kindlustus ning nüüd juba ka Ühendkuningriigis tegutsev LHV Bank Limited.
+        Esitatud analüüs põhineb 2025. aasta I kvartali ametlikel tulemustel, avalikult kättesaadavatel andmetel ning analüütiliste tööriistade põhjal tehtud võrdlevatel hinnangutel.
+      </p>
+      <ul class="list-disc ml-5 space-y-2">
+        <li>
+          LHV tugev kasv <span class="highlight">Eesti kodulaenu- ja ärilaenude turul</span> jätkus, kuid kasum langes Q1'24 ja Q4'24 võrdluses,
+          sest intressitulud vähenesid ning erakorralised laenukahjumite allahindlused suurenesid.
+        </li>
+        <li>
+          Grupi konsolideeritud <strong>puhaskasum Q1 2025: <span class="highlight">€29,2 M</span></strong> (–28% aasta baasil),
+          peegeldab kasvavaid reserve mitteresidendist klientide laenude katteks.
+        </li>
+        <li>
+          LHV konkurentsipositsioon Eesti turul on jätkuvalt <span class="highlight">tugev kolmas</span> (Swedbanki ja SEB järel),
+          kodumaise kapitali seisukohalt on #1 positsioon.
+        </li>
+        <li>
+          Tulemusnäitajate (ROE, NIM) langus on ajutine; <strong>pikaajaliseks väljavaateks prognoositakse kasumi taastumist ja
+          kasvutrendi</strong> tänu laenuportfelli jätkuvale laienemisele ning UK-äri edukale käivitumisele.
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+  <!-- Ettevõtte tutvustus -->
+  <section id="ettevote" class="container mx-auto my-8 bg-white rounded-lg shadow p-6 border-gray-200 border">
+    <h2 class="section-title mb-4"><i class="fas fa-building text-blue-800 mr-2"></i>Ettevõtte tutvustus ja tegevusvaldkonnad</h2>
+    <p>
+      <b>Asutatud 1999</b>, LHV Group AS on noteeritud Nasdaq Tallinna börsi põhinimekirjas.<br>
+      Tänaseks hõlmab grupp nelja peamist tütarettevõtet: <span class="highlight">LHV Pank</span> (täisteenuspank Eestis), <span class="highlight">LHV Varahaldus</span> (pensioni- ja investeerimisfondid), <span class="highlight">LHV Kindlustus</span> (varakindlustus) ning <span class="highlight">LHV Bank Ltd</span> (pangandus Ühendkuningriigis).
+    </p>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mt-5">
+      <div>
+        <h3 class="font-bold mt-2 mb-2 text-gray-700">Põhinäitajad, märts 2025 seisuga</h3>
+        <ul class="list-disc ml-5">
+          <li>Kliendid kokku: <b>465 000</b></li>
+          <li>Aktiivselt hallatavad pensionikontod: <b>113 000</b></li>
+          <li>Kindikindlustuskliendid: <b>174 000</b></li>
+          <li>Peakontor: Tallinn, Eesti</li>
+          <li>Välisriigi tegevus: <b>Suurbritannia</b> (LHV Bank Ltd), puudub Soome turg</li>
+        </ul>
+      </div>
+      <div>
+    </div>
+  </section>
+
+  <!-- Q1 2025 finantstulemused -->
+  <section id="tulemused" class="container mx-auto my-8 bg-white rounded-lg shadow p-6 border-gray-200 border">
+    <h2 class="section-title mb-4"><i class="fas fa-chart-line text-yellow-700 mr-2"></i>Q1 2025 Finantstulemused</h2>
+    <div class="overflow-x-auto">
+    <table class="min-w-full bg-white divide-y divide-gray-200 mb-5 text-center rounded">
+      <thead>
+        <tr>
+          <th class="p-2 font-bold bg-gray-100">Näitajad</th>
+          <th class="p-2 font-bold bg-gray-100">Q1 2025</th>
+          <th class="p-2 font-bold bg-gray-100">Q4 2024</th>
+          <th class="p-2 font-bold bg-gray-100">Q1 2024</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-100">
+        <tr>
+          <td class="p-2">Puhaskasum (milj €)</td>
+          <td class="p-2">29,2</td>
+          <td class="p-2">36,3</td>
+          <td class="p-2">40,7</td>
+        </tr>
+        <tr>
+          <td class="p-2">Netotulud (milj €)</td>
+          <td class="p-2">79,4</td>
+          <td class="p-2">84,9</td>
+          <td class="p-2">85,4</td>
+        </tr>
+        <tr>
+          <td class="p-2">Laenuportfell (milj €)</td>
+          <td class="p-2">4 729</td>
+          <td class="p-2">4 552</td>
+          <td class="p-2">3 645</td>
+        </tr>
+        <tr>
+          <td class="p-2">Hoiused (milj €)</td>
+          <td class="p-2">6 604</td>
+          <td class="p-2">6 910</td>
+          <td class="p-2">5 934</td>
+        </tr>
+        <tr>
+          <td class="p-2">ROE (%)</td>
+          <td class="p-2">17,0</td>
+          <td class="p-2">22,0</td>
+          <td class="p-2">28,5</td>
+        </tr>
+        <tr>
+          <td class="p-2">Kapitali adekvaatsus (%)</td>
+          <td class="p-2">20,8</td>
+          <td class="p-2">21,9</td>
+          <td class="p-2">22,8</td>
+        </tr>
+      </tbody>
+    </table>
+   </div>
+    <p>
+      <b>Q1 2025 kokkuvõte:</b> Mahukas kahekohaline laenuportfelli kasv viitab jätkuvale turuosa võitmisele, kuid kasumlikkuse vähenemine kajastub nii ROE kui ka netotulude vähenemises. <b>Impairmentid (laenukahjumite katteks)</b> olid oluliselt kõrgemad kui aasta varem. Panga kapitalipuhver on tugev.
+    </p>
+    <div class="flex flex-col items-center mt-8">
+  <!-- Graafik -->
+  <canvas
+    id="chart-financials"
+    class="bg-white rounded-lg shadow w-full md:w-3/5"
+  ></canvas>
+
+  <!-- Allikas teksti paigutus graafiku alla -->
+  <div class="mt-4 text-sm text-left md:text-left w-full md:w-3/5">
+    <span class="font-bold">Allikas:</span> LHV Group Q1 2025 aruanded, Nasdaq Baltic.
+    Visualiseeritud LHV olulisemad kvartalitulemused 2024–2025
+  </div>
+</div>
+
+<script>
+  window.addEventListener('DOMContentLoaded', function() {
+    const ctx = document.getElementById('chart-financials').getContext('2d');
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Q1 2024', 'Q4 2024', 'Q1 2025'],
+        datasets: [
+          { label: 'Puhaskasum (milj €)', data: [40.7, 36.3, 29.2], backgroundColor: '#DAF2D0' },
+          { label: 'Laenuportfell (milj €)', data: [3645, 4552, 4729], backgroundColor: '#C0E6F5' },
+          { label: 'Hoiused (milj €)', data: [5934, 6910, 6604], backgroundColor: '#FBE2D5' }
+        ]
+      },
+      options: {
+        responsive: true,
+        plugins: { legend: { position: 'bottom' } },
+        scales: { y: { beginAtZero: true } }
+      }
+    });
+  });
+</script>
+
+  </section>
+
+  <!-- Finantsanalüüs ja võtmenäitajad -->
+<section
+  id="finants"
+  class="relative container mx-auto my-8 bg-white rounded-lg shadow p-6 border border-gray-200"
+>
+  <!-- Suhtarvude graafik: absoluutne positsioneerimine paremal -->
+  <div class="absolute top-0 bottom-0 right-5 w-2/5 p-6 flex items-center justify-center">
+    <canvas id="chart-ratios" class="w-full h-full"></canvas>
+  </div>
+
+  <!-- Sisu: veidi paremale nihutatud, et mahuks suhtarvude paneelile alla -->
+  <div class="md:pr-[40%]">
+    <h2 class="section-title mb-4">
+      <i class="fas fa-calculator text-purple-700 mr-2"></i>
+      Finantsanalüüs ja võtmenäitajad
+    </h2>
+
+    <ul class="list-disc ml-6 mb-6">
+      <li><strong>P/E suhe (trailing):</strong> 8,17 (<a href="https://finance.yahoo.com/quote/LHV1T.TL/" class="text-blue-700 underline" target="_blank">allikas</a>) – sektoris keskmine vahemik 10–12</li>
+      <li><strong>P/B suhe:</strong> 1,59</li>
+      <li><strong>Dividend 2025:</strong> 0,09 € aktsia kohta (10.04.2025 väljamakse, dividenditootlus u 2,6 %)</li>
+      <li><strong>Netointressimarginaal:</strong> 2,89 % (Q1 2025)</li>
+      <li><strong>Kulu/tulu suhe:</strong> 47,3 % (mõõdukas efektiivsus)</li>
+    </ul>
+
+    <!-- Dividendid jäävad tavapäraselt alla -->
+    <div class="mt-6 w-full md:w-3/5">
+      <canvas id="chart-dividends"></canvas>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Suhtarvud (radar)
+    new Chart(document.getElementById('chart-ratios').getContext('2d'), {
+      type: 'radar',
+      data: {
+        labels: ['P/E', 'P/B', 'ROE %', 'Kulu/Tulu %', 'NIM %'],
+        datasets: [{
+          label: 'LHV Q1 2025',
+          data: [8.17, 1.59, 17.0, 47.3, 2.89],
+          fill: true,
+          backgroundColor: 'rgba(55,65,81,0.07)',
+          borderColor: '#0ea5e9',
+          pointBackgroundColor: '#0ea5e9',
+          pointBorderColor: '#fff'
+        }]
+      },
+      options: { plugins: { legend: { display: false } } }
+    });
+
+    // Dividendid (line)
+    new Chart(document.getElementById('chart-dividends').getContext('2d'), {
+      type: 'line',
+      data: {
+        labels: ['2021', '2022', '2023', '2024', '2025'],
+        datasets: [{
+          label: 'Aastane dividend €/aktsia',
+          data: [0.04, 0.04, 0.04, 0.13, 0.09],
+          borderColor: '#16a34a',
+          backgroundColor: 'rgba(34,197,94,0.13)',
+          fill: true,
+          tension: 0.25,
+          pointRadius: 5,
+          pointHoverRadius: 7
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: { y: { beginAtZero: true } },
+        plugins: { legend: { display: false } }
+      }
+    });
+  });
+</script>
+
+
+</section>
+
+
+  <!-- Turuülevaade -->
+  <section id="turg" class="container mx-auto my-8 bg-white rounded-lg shadow p-6 border-gray-200 border">
+    <h2 class="section-title mb-4"><i class="fas fa-globe-europe text-orange-700 mr-2"></i>Turuülevaade ja konkurentsipositsioon</h2>
+    <p>
+      <b>Eesti pangandusmaastikul</b> lõi 2025. aasta algus oodatult pingelise konkurentsisituatsiooni: uute laenude kasv aeglustus, intressikulu langes, kuid sisetarbimine püsis. LHV peamised konkurendid on <b>Swedbank</b>, <b>SEB</b> ja <b>Coop Pank</b>. Swedbank ja SEB domineerivad eraklientide hoiuste ja laenude turul, Coop Pank kasvab samuti kiiresti.
+    </p>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center my-6">
+      <div>
+        <ul class="list-disc ml-5">
+          <li><span class="font-bold">Swedbank:</span> EBITDA 2024 prognoosil 230+ mln € (Eestis), turuosa kodulaenudes 50% lähedal.</li>
+          <li><span class="font-bold">SEB:</span> Tugev äri- & erakliendi segment, investeeringud rohetehnoloogiasse.</li>
+          <li><span class="font-bold">Coop Pank:</span> Fookus madalatel teenustasudel ja regionaalsel kohalolul; Q1 2025 kasum 8,5 mln €.</li>
+          <li><span class="font-bold">LHV tugevused:</span> Kohalik kapital, digitaalne kultuur, paindlikkus ja kiire krediidiplaneerimine.</li>
+        </ul>
+      </div>
+    </div>
+    <canvas id="marketChart" class="w-full md:w-2/3 mx-auto mt-3"></canvas>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        new Chart(document.getElementById('marketChart').getContext('2d'), {
+          type: 'doughnut',
+          data: {
+            labels: ['Swedbank','SEB','LHV','Coop Pank','Muud'],
+            datasets: [{ label:'Kodulaenude turuosad (%)', data: [48, 19, 15, 7, 11],
+              backgroundColor: ['#DAF2D0','#C0E6F5','#FBE2D5','#DAE9F8','#F2CEEF'],
+              hoverOffset: 5
+            }]
+          },
+          options: {
+            plugins: { legend:{ position:'bottom' }, title:{ display:true, text:'Kodulaenude turuosad Eesti 2025 (prognoos)' } }
+          }
+        });
+      });
+    </script>
+  </section>
+
+  <!-- Tulevikuprognoosid ja riskid -->
+  <section id="prognoosid" class="container mx-auto my-8 bg-white rounded-lg shadow p-6 border-gray-200 border">
+    <h2 class="section-title mb-4"><i class="fas fa-hourglass-half text-indigo-700 mr-2"></i>Tulevikuprognoosid ja riskid</h2>
+    <p>
+      <b>LHV pikaajaline finantsprognoos</b> näeb ette ärimahtude ja kasumite jätkuvat kasvu:
+    </p>
+    <div class="overflow-x-auto mt-3">
+    <table class="min-w-full text-center bg-white divide-y divide-gray-200 rounded">
+      <thead>
+        <tr>
+          <th class="p-2 bg-gray-100 font-bold">Võtmenäitajad</th>
+          <th class="p-2 bg-gray-100">2025</th>
+          <th class="p-2 bg-gray-100">2026</th>
+          <th class="p-2 bg-gray-100">2027</th>
+          <th class="p-2 bg-gray-100">2028</th>
+          <th class="p-2 bg-gray-100">2029</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-100">
+        <tr>
+          <td class="p-2">Puhaskasum (miljon €)</td>
+          <td>125</td><td>154</td><td>185</td><td>229</td><td>269</td>
+        </tr>
+        <tr>
+          <td class="p-2">Laenuportfell (miljon €)</td>
+          <td>5 345</td><td>6 227</td><td>7 099</td><td>7 956</td><td>8 865</td>
+        </tr>
+        <tr>
+          <td class="p-2">Hoiused (miljon €)</td>
+          <td>7 558</td><td>8 473</td><td>9 485</td><td>10 339</td><td>11 375</td>
+        </tr>
+        <tr>
+          <td class="p-2">ROE (%)</td>
+          <td>18,1</td><td>20,1</td><td>21,2</td><td>23,2</td><td>24,1</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="my-4">
+      <div class="block">
+        <b>Riskid:</b>
+        <ul class="list-disc ml-7 mt-1">
+          <li>Makromajanduse volatiilsus (Eesti ja UK majandus, tööpuudus, kinnisvarahinnad)</li>
+          <li>Intressimäära langus: negatiivne mõju netointressitulule</li>
+          <li>Regulatiivsed muudatused EL-is ning finantsturu globaliseerumine</li>
+          <li>Konkurentide hinnasõjad, kui Coop või välispangad alustavad agressiivseid kampaaniaid</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hinnasiht ja soovitused -->
+  <section id="soovitused" class="container mx-auto my-8 bg-white rounded-lg shadow p-6 border-gray-200 border">
+    <h2 class="section-title mb-4"><i class="fas fa-lightbulb text-yellow-400 mr-2"></i>Aktsiahinna soovitused</h2>
+    <div class="mt-2 mb-5 prose max-w-none">
+      <ul class="list-decimal ml-6 font-semibold mb-4">
+        <li>Lühi- kuni keskmise horisondi (6-18 kuud) hinnasiht: <span class="highlight">3,85 - 4,40 €</span>
+          <span class="text-gray-500 text-sm font-normal">(võrreldav sektoriga, realistlik konservatiivne hinnasiht)</span>
+        </li>
+        <li>Pikaajaline hinnasiht (3-5 aastat): <span class="highlight">5,00 - 6,00 €</span><span class="text-gray-500 text-sm font-normal ml-2">(kasumliku kasvu jätkumisel ja ROE taastudes >20%)</span></li>
+      </ul>
+      <p class="mb-1"><b>Soovitus:</b> <span class="highlight">Osta</span> pikaajalistele investoritele, <span class="highlight">Hoia</span> olemasolevatele portfellidele. LHV pakub head tasakaalu kasvupotentsiaali ja dividendide vahel ning tugevat kohalikku brändi.</p>
+      <p class="mb-1 text-gray-600"><b>NB!</b> Kõik aktsiainvesteeringud sisaldavad riski. Analüüs ei ole individuaalne investeerimissoovitus. Tutvu lisaks finantsprognooside ja kvartaliaruannetega allikates.</p>
+    </div>
+  </section>
+
+  <!-- Allikad -->
+  <section id="allikad" class="container mx-auto my-10 bg-white rounded-lg shadow p-6 border-gray-200 border">
+    <h2 class="section-title mb-4"><i class="fas fa-link text-gray-700 mr-2"></i>Allikad ja kasutatud materjalid</h2>
+    <ul class="list-disc ml-7">
+      <li><a class="text-blue-800 underline hover:text-blue-600" href="https://www.lhv.ee/en" target="_blank">LHV Group ametlik veebileht ja Q1 2025 aruanded</a></li>
+      <li><a class="text-blue-800 underline hover:text-blue-600" href="https://nasdaqbaltic.com/statistics/en/instrument/EE3100102203/trading" target="_blank">Nasdaq Baltic - LHV aktsia kaubanduse info</a></li>
+      <li><a class="text-blue-800 underline hover:text-blue-600" href="https://finance.yahoo.com/quote/LHV1T.TL/" target="_blank">Yahoo Finance (LHV1T.TL) - finantsnäitajad</a></li>
+      <li><a class="text-blue-800 underline hover:text-blue-600" href="https://investor.lhv.ee/finantsprognoosid/" target="_blank">LHV Groupi finantsprognoosid</a></li>
+      <li><a class="text-blue-800 underline hover:text-blue-600" href="https://www.globenewswire.com/news-release/2025/04/23/3066274/0/en/Correction-LHV-Group-unaudited-financial-results-for-Q1-2025.html" target="_blank">GlobeNewswire: LHV Q1 2025 Pressiteade</a></li>
+      <li>Konkurentide info: Swedbank/SEB/Coop börsiteated, ERR, Äripäev jm</li>
+    </ul>
+  </section>
+  <footer class="w-full mt-10 py-6 px-4 bg-gray-50 text-center text-gray-400 text-xs">Käesolev dokument on loodud informatiivsel eesmärgil ning ei sisalda investeerimissoovitust &copy; 2025 Jan Reimann & AI | Kasutatud on ainult avalikke allikaid.</footer>
+</body>
+</html>
